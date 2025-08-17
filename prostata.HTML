@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Diagnóstico Preliminar de HPB</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #f0f4c3, #ffffff);
+      padding: 2em;
+      color: #333;
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+    label {
+      display: block;
+      margin-top: 1em;
+      font-weight: bold;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 0.5em;
+      margin-top: 0.3em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 2em;
+      padding: 0.8em 1.5em;
+      font-size: 1.1em;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #resultado {
+      margin-top: 2em;
+      font-size: 1.2em;
+      font-style: italic;
+      background: #e8f5e9;
+      padding: 1em;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌿 Sistema Experto - Diagnóstico Preliminar de HPB</h1>
+
+  <label>Frecuencia urinaria nocturna (0 a 6):</label>
+  <input type="number" id="frecuencia" min="0" max="6" step="0.1">
+
+  <label>Fuerza del chorro urinario (0 a 10):</label>
+  <input type="number" id="chorro" min="0" max="10" step="0.1">
+
+  <label>Edad del paciente (40 a 90):</label>
+  <input type="number" id="edad" min="40" max="90">
+
+  <label>Actividad física (0=sedentario / 10=activo):</label>
+  <input type="number" id="actividad" min="0" max="10">
+
+  <label>Consumo de alcohol (0=nulo / 10=frecuente):</label>
+  <input type="number" id="alcohol" min="0" max="10">
+
+  <label>Función sexual / vida en pareja (0=mala / 10=plena):</label>
+  <input type="number" id="sexualidad" min="0" max="10">
+
+  <label>¿Dolor o ardor al orinar? (0=nada / 10=intenso):</label>
+  <input type="number" id="miccional" min="0" max="10">
+
+  <label>¿Dolor bajo vientre o hipogastrio? (0=nada / 10=fuerte):</label>
+  <input type="number" id="abdomen" min="0" max="10">
+
+  <button onclick="evaluar()">Evaluar diagnóstico</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function evaluar() {
+      const f = parseFloat(document.getElementById('frecuencia').value || 0);
+      const c = parseFloat(document.getElementById('chorro').value || 0);
+      const e = parseInt(document.getElementById('edad').value || 0);
+      const a = parseInt(document.getElementById('actividad').value || 0);
+      const alc = parseInt(document.getElementById('alcohol').value || 0);
+      const vs = parseInt(document.getElementById('sexualidad').value || 0);
+      const dm = parseInt(document.getElementById('miccional').value || 0);
+      const da = parseInt(document.getElementById('abdomen').value || 0);
+
+      let score = 0;
+
+      // Reglas discretas inspiradas en el sistema difuso
+      if (f > 4) score += 2;
+      if (c < 4) score += 2;
+      if (e > 70) score += 1;
+      if (a < 3) score += 1;
+      if (alc > 6) score += 1;
+      if (vs < 4) score += 1;
+      if (dm > 6) score += 2;
+      if (da > 6) score += 2;
+
+      let resultado = "";
+      if (score <= 3) {
+        resultado = `
+          <strong>Evaluación: HPB Leve</strong><br>
+          Síntomas mínimos. Estilo de vida saludable.<br>
+          <em>Recomendación:</em> Seguimiento anual, promover ejercicio, PSA si hay antecedentes.
+        `;
+      } else if (score <= 6) {
+        resultado = `
+          <strong>Evaluación: HPB Moderada</strong><br>
+          Síntomas urinarios intermedios o factores de riesgo presentes.<br>
+          <em>Recomendación:</em> PSA + ecografía prostática. Revisión de estilo de vida. Considerar tratamiento farmacológico.
+        `;
+      } else {
+        resultado = `
+          <strong>Evaluación: HPB Severa</strong><br>
+          Posible obstrucción significativa, síntomas progresivos y alteración de calidad de vida.<br>
+          <em>Recomendación:</em> Tacto rectal, PSA urgente, ecografía, flujometría. Derivación urológica.
+        `;
+      }
+
+      document.getElementById('resultado').innerHTML = resultado;
+    }
+  </script>
+
+</body>
+</html>

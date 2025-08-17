@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>🌸 Test Íntimo Femenino</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fce4ec, #ffffff);
+      padding: 2em;
+      color: #333;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+    label {
+      display: block;
+      margin-top: 1em;
+      font-weight: bold;
+    }
+    select {
+      width: 100%;
+      padding: 0.5em;
+      margin-top: 0.3em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 1.5em;
+      padding: 0.8em 1.5em;
+      font-size: 1.1em;
+      background-color: #ec407a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #resultado {
+      margin-top: 2em;
+      font-size: 1.2em;
+      font-style: italic;
+      background: #fce4ec;
+      padding: 1em;
+      border-radius: 8px;
+    }
+    #acciones button {
+      margin-right: 1em;
+      background-color: #8e24aa;
+    }
+    #acciones button:last-child {
+      background-color: #26a69a;
+    }
+    hr {
+      margin: 2em 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌸 Test Íntimo Femenino</h1>
+  <p>Este test está diseñado para ayudarte a escuchar tu cuerpo con respeto y claridad.  
+  No reemplaza una consulta médica, pero puede orientarte con cariño.</p>
+
+  <hr>
+  <h2>Responde con sinceridad:</h2>
+
+  <div id="preguntas"></div>
+
+  <button onclick="evaluar()">🌿 Evaluar mi resultado</button>
+
+  <div id="resultado"></div>
+
+  <div id="acciones" style="margin-top: 2em; display: none;">
+    <button onclick="irABlog()">🏡 Volver al blog</button>
+    <button onclick="irAIndex()">🧪 Explorar otros tests</button>
+  </div>
+
+  <hr>
+  <p style="font-size: 0.9em; color: #777;">
+    Este test es educativo y no reemplaza una consulta médica.  
+    Tu cuerpo merece cuidado, escucha y respeto.
+  </p>
+
+  <script>
+    const preguntas = [
+      "¿Has sentido picazón intensa en la zona íntima?",
+      "¿Has notado flujo vaginal diferente al habitual?",
+      "¿El flujo tiene mal olor?",
+      "¿Sientes ardor al orinar?",
+      "¿Sientes dolor o incomodidad durante las relaciones sexuales?",
+      "¿Has usado óvulos, cremas o tratamientos íntimos recientemente?",
+      "¿Has tenido relaciones sexuales sin protección en los últimos 30 días?",
+      "¿Has tomado antibióticos recientemente?",
+      "¿Has tenido cambios hormonales, estrés fuerte o alteraciones en tu ciclo?",
+      "¿Has tenido fiebre, escalofríos o dolor pélvico intenso?"
+    ];
+
+    const contenedor = document.getElementById('preguntas');
+
+    preguntas.forEach((texto, i) => {
+      const label = document.createElement('label');
+      label.textContent = texto;
+
+      const select = document.createElement('select');
+      select.id = 'q' + (i + 1);
+      ["No", "Sí"].forEach(opcion => {
+        const opt = document.createElement('option');
+        opt.value = opcion;
+        opt.textContent = opcion;
+        select.appendChild(opt);
+      });
+
+      contenedor.appendChild(label);
+      contenedor.appendChild(select);
+    });
+
+    function evaluar() {
+      const respuestas = [];
+      for (let i = 1; i <= 10; i++) {
+        respuestas.push(document.getElementById('q' + i).value);
+      }
+
+      const hongos = ["q1", "q2", "q4"].filter(q => document.getElementById(q).value === "Sí").length;
+      const bacterias = ["q2", "q3", "q8"].filter(q => document.getElementById(q).value === "Sí").length;
+      const ets = ["q3", "q5", "q7", "q10"].filter(q => document.getElementById(q).value === "Sí").length;
+      const irritacion = ["q1", "q6", "q9"].filter(q => document.getElementById(q).value === "Sí").length;
+      const equilibrio = respuestas.every(r => r === "No");
+
+      let resultado = "";
+
+      if (hongos >= 2) {
+        resultado = `
+          <strong>Tu cuerpo podría estar mostrando señales compatibles con candidiasis.</strong><br>
+          Recomendaciones: higiene suave, probióticos, evitar azúcares, consultar si persiste.
+        `;
+      } else if (bacterias >= 2) {
+        resultado = `
+          <strong>Podrías estar experimentando una alteración bacteriana (vaginosis).</strong><br>
+          Recomendaciones: evitar duchas vaginales, usar ropa de algodón, consultar si hay mal olor persistente.
+        `;
+      } else if (ets >= 2) {
+        resultado = `
+          <strong>Algunas respuestas sugieren posible infección de transmisión sexual.</strong><br>
+          Recomendaciones: no automedicarse, consultar pronto, evitar relaciones hasta tener claridad.
+        `;
+      } else if (irritacion >= 2) {
+        resultado = `
+          <strong>Los síntomas podrían deberse a una irritación no infecciosa.</strong><br>
+          Recomendaciones: suspender productos nuevos, higiene suave, observar evolución.
+        `;
+      } else if (equilibrio) {
+        resultado = `
+          <strong>No se detectan señales relevantes en este momento.</strong><br>
+          Tu cuerpo parece estar en equilibrio. Mantén tus rutinas de cuidado y escucha interna.
+        `;
+      } else {
+        resultado = `
+          <strong>Los síntomas no encajan claramente en un solo perfil.</strong><br>
+          Recomendaciones: aplicar cuidados básicos, observar evolución, consultar si hay empeoramiento.
+        `;
+      }
+
+      document.getElementById('resultado').innerHTML = resultado;
+      document.getElementById('acciones').style.display = 'block';
+    }
+
+    function irABlog() {
+      window.location.href = "https://tu-blog.blogspot.com"; // ← reemplaza con tu URL real
+    }
+
+    function irAIndex() {
+      window.location.href = "https://tu-blog.blogspot.com/p/test-index.html"; // ← reemplaza con tu índice de tests
+    }
+  </script>
+
+</body>
+</html>
