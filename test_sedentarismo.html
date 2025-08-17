@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>🏃‍♂️ Test de Sedentarismo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 800px;
+      margin: auto;
+      padding: 2em;
+      background: #f0f4f8;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2em;
+    }
+    label {
+      display: block;
+      margin-top: 1em;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.5em;
+      margin-top: 0.3em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    input[type="range"] {
+      width: 100%;
+    }
+    button {
+      margin-top: 2em;
+      padding: 0.8em 1.5em;
+      font-size: 1em;
+      background-color: #0078D4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #resultado {
+      margin-top: 2em;
+      background: #e3f2fd;
+      padding: 1em;
+      border-left: 5px solid #0078D4;
+      font-size: 1.1em;
+    }
+    #acciones button {
+      margin: 1em 0.5em;
+      background-color: #444;
+    }
+    footer {
+      margin-top: 3em;
+      font-size: 0.9em;
+      color: #666;
+      text-align: center;
+      border-top: 1px solid #ccc;
+      padding-top: 1em;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏃‍♂️ ¿Tu estilo de vida es sedentario?</h1>
+  <p>Este test educativo te ayuda a reflexionar sobre tu nivel de actividad física y recibir recomendaciones personalizadas.<br>
+  Forma parte de tu ritual de autocuidado y activación corporal.</p>
+
+  <label>Peso en kg:</label>
+  <input type="number" id="peso" min="30" max="200" step="0.5">
+
+  <label>Estatura en metros:</label>
+  <input type="number" id="talla" min="1.0" max="2.5" step="0.01">
+
+  <label>¿Tu trabajo es principalmente…</label>
+  <select id="trabajo">
+    <option>🪑 Sedentario (escritorio, oficina, conducción)</option>
+    <option>🚶‍♂️ Activo (ventas, docencia, atención al público)</option>
+    <option>🛠️ Físico (construcción, agricultura, deporte)</option>
+  </select>
+
+  <label>¿Realizas algún tipo de ejercicio físico?</label>
+  <select id="actividad">
+    <option>Nunca</option>
+    <option>1–2 veces por semana</option>
+    <option>3–5 veces por semana</option>
+    <option>Diariamente</option>
+  </select>
+
+  <label>¿Cuánto tiempo dedicas al ejercicio cada vez? (minutos)</label>
+  <input type="range" id="duracion" min="0" max="120" value="30" oninput="document.getElementById('duracion_val').textContent = this.value">
+  <span id="duracion_val">30</span> min
+
+  <label>¿Cuántas horas al día usas el computador?</label>
+  <input type="range" id="computador" min="0" max="12" value="4" oninput="document.getElementById('comp_val').textContent = this.value">
+  <span id="comp_val">4</span> h
+
+  <label>¿Cuántas horas al día usas el celular?</label>
+  <input type="range" id="celular" min="0" max="12" value="3" oninput="document.getElementById('cel_val').textContent = this.value">
+  <span id="cel_val">3</span> h
+
+  <button onclick="evaluar()">🔍 Ver diagnóstico de sedentarismo</button>
+
+  <div id="resultado" style="display:none;"></div>
+
+  <div id="acciones" style="display:none; text-align:center;">
+    <button onclick="irAIndex()" style="background-color:#444; color:white; padding:0.8em 1.5em; border:none; border-radius:5px; margin:0.5em; cursor:pointer;">
+      🔙 Regresar al índice
+    </button>
+    <button onclick="cerrarTest()" style="background-color:#444; color:white; padding:0.8em 1.5em; border:none; border-radius:5px; margin:0.5em; cursor:pointer;">
+      🧘 Cerrar y permanecer aquí
+    </button>
+  </div>
+
+  <footer>
+    Este test es educativo y no sustituye una evaluación médica profesional.
+  </footer>
+
+  <script>
+    function evaluar() {
+      const peso = parseFloat(document.getElementById("peso").value);
+      const talla = parseFloat(document.getElementById("talla").value);
+      const trabajo = document.getElementById("trabajo").value;
+      const actividad = document.getElementById("actividad").value;
+      const duracion = parseInt(document.getElementById("duracion").value);
+      const computador = parseInt(document.getElementById("computador").value);
+      const celular = parseInt(document.getElementById("celular").value);
+
+      if (!peso || !talla) {
+        alert("Por favor ingresa tu peso y estatura.");
+        return;
+      }
+
+      const imc = peso / (talla * talla);
+      let puntos = 0;
+
+      if (trabajo.includes("Sedentario")) puntos += 2;
+      if (actividad === "Nunca") puntos += 3;
+      else if (actividad === "1–2 veces por semana") puntos += 2;
+      else if (actividad === "3–5 veces por semana") puntos += 1;
+      if (computador + celular > 6) puntos += 2;
+      if (imc >= 25) puntos += 1;
+
+      let nivel = "";
+      let recomendaciones = "";
+
+      if (puntos >= 7) {
+        nivel = "🚨 Sedentarismo alto";
+        recomendaciones = `
+          <ul>
+            <li>Realiza pausas activas cada 60 minutos.</li>
+            <li>Camina al menos 30 minutos diarios.</li>
+            <li>Prueba rutinas breves de estiramiento o yoga.</li>
+            <li>Reduce el tiempo frente a pantallas en bloques.</li>
+          </ul>
+        `;
+      } else if (puntos >= 4) {
+        nivel = "⚠️ Sedentarismo moderado";
+        recomendaciones = `
+          <ul>
+            <li>Aumenta la frecuencia de actividad física semanal.</li>
+            <li>Incorpora caminatas conscientes o ejercicios suaves.</li>
+            <li>Evalúa tu postura y ergonomía.</li>
+          </ul>
+        `;
+      } else {
+        nivel = "✅ Estilo de vida activo";
+        recomendaciones = `
+          <ul>
+            <li>¡Sigue así! Mantén tu rutina y escucha tu cuerpo.</li>
+            <li>Explora nuevas formas de movimiento: danza, natación, ciclismo.</li>
+          </ul>
+        `;
+      }
+
+      document.getElementById("resultado").style.display = "block";
+      document.getElementById("resultado").innerHTML = `
+        <h2>🧭 Resultado</h2>
+        <p><strong>Nivel de sedentarismo:</strong> ${nivel}</p>
+        <p><strong>Recomendaciones personalizadas:</strong></p>
+        ${recomendaciones}
+        <p>📊 Tu IMC estimado es: <strong>${imc.toFixed(1)}</strong></p>
+      `;
+      document.getElementById("acciones").style.display = "block";
+    }
+
+    function irAIndex() {
+      window.location.href = "index.html";
+    }
+
+    function cerrarTest() {
+      document.body.innerHTML = `
+        <div style="text-align:center; padding:3em; font-size:1.2em; background:#f0f4f8;">
+          🧘 Gracias por realizar tu ritual de activación corporal.<br><br>
+          <em>Tu cuerpo ha hablado, ahora escúchalo.</em><br><br>
+          Que tu movimiento sea medicina, y tu descanso, sabiduría.<br><br>
+          <a href="https://www.blogger.com" style="color:#0078D4; font-weight:bold;">Volver al blog</a>
+        </          <a href="https://www.blogger.com" style="color:#0078D4; font-weight:bold;">Volver al blog</a>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>

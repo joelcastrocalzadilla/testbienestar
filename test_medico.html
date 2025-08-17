@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Médico Orientativo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 2em;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.8em;
+    }
+    .question {
+      margin: 1.5em 0;
+    }
+    .question label {
+      display: block;
+      margin: 0.5em 0;
+    }
+    select, input[type="radio"] {
+      margin-right: 0.5em;
+    }
+    button {
+      display: block;
+      margin: 1.5em auto;
+      padding: 0.8em 1.5em;
+      font-size: 1em;
+      background-color: #0078D4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .result {
+      background: #e0f7fa;
+      padding: 1em;
+      border-left: 5px solid #0078D4;
+      margin-top: 2em;
+    }
+    #botones-finales button {
+      background-color: #444;
+      margin: 0.5em;
+    }
+    footer {
+      margin-top: 3em;
+      font-size: 0.9em;
+      color: #666;
+      border-top: 1px solid #ccc;
+      padding-top: 1em;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>🩺 ¿Qué médico debo consultar según mi dolencia?</h1>
+  <p>Este test educativo te orienta sobre qué tipo de especialista podrías consultar según tus síntomas.<br>
+  No reemplaza una consulta médica, pero puede ayudarte a tomar decisiones informadas.</p>
+
+  <div class="question">
+    <label for="dolencia">1️⃣ ¿Cuál de estas áreas describe mejor tu dolencia principal?</label>
+    <select id="dolencia">
+      <option>💓 Dolor en el pecho, palpitaciones, presión alta</option>
+      <option>🍽️ Problemas digestivos: acidez, diarrea, estreñimiento</option>
+      <option>🦴 Dolor muscular, articular o de espalda</option>
+      <option>🧠 Cambios en el estado de ánimo, ansiedad, insomnio</option>
+      <option>🚻 Problemas urinarios, sexuales o reproductivos</option>
+      <option>🧴 Lesiones en la piel: lunares, acné, irritaciones</option>
+      <option>🌬️ Dificultad para respirar, tos persistente, alergias</option>
+    </select>
+  </div>
+
+  <div class="question">
+    <label>2️⃣ ¿Desde cuándo lo sientes?</label>
+    <label><input type="radio" name="duracion" value="Reciente"> ⏱️ Reciente (menos de una semana)</label>
+    <label><input type="radio" name="duracion" value="Recurrente"> 🔁 Recurrente (va y viene)</label>
+    <label><input type="radio" name="duracion" value="Crónica"> 📆 Crónica (más de 3 meses)</label>
+  </div>
+
+  <div class="question">
+    <label>3️⃣ ¿Has tenido fiebre, pérdida de peso o fatiga inexplicable?</label>
+    <label><input type="radio" name="sintomas" value="Sí"> 🔥 Sí</label>
+    <label><input type="radio" name="sintomas" value="No"> ❄️ No</label>
+  </div>
+
+  <div class="question">
+    <label>4️⃣ ¿Tu dolencia afecta tu vida diaria?</label>
+    <label><input type="radio" name="impacto" value="Sí"> 🚨 Sí, bastante</label>
+    <label><input type="radio" name="impacto" value="Un poco"> ⚠️ Un poco</label>
+    <label><input type="radio" name="impacto" value="No mucho"> ✅ No mucho</label>
+  </div>
+
+  <button onclick="mostrarResultado()">🔍 Ver orientación médica</button>
+
+  <div id="resultado" class="result" style="display:none;"></div>
+
+  <div id="botones-finales" style="display:none; text-align:center; margin-top:1.5em;">
+    <button onclick="regresarIndex()">🔙 Regresar al índice</button>
+    <button onclick="cerrarTest()">🧘 Cerrar y permanecer aquí</button>
+  </div>
+
+  <footer id="footer">
+    Este test es educativo y no sustituye una evaluación médica profesional.
+  </footer>
+
+  <script>
+    function mostrarResultado() {
+      const dolencia = document.getElementById("dolencia").value;
+
+      const especialistas = {
+        "💓 Dolor en el pecho, palpitaciones, presión alta": "Cardiólogo",
+        "🍽️ Problemas digestivos: acidez, diarrea, estreñimiento": "Gastroenterólogo",
+        "🦴 Dolor muscular, articular o de espalda": "Reumatólogo o Fisiatra",
+        "🧠 Cambios en el estado de ánimo, ansiedad, insomnio": "Psicólogo o Psiquiatra",
+        "🚻 Problemas urinarios, sexuales o reproductivos": "Urólogo o Ginecólogo",
+        "🧴 Lesiones en la piel: lunares, acné, irritaciones": "Dermatólogo",
+        "🌬️ Dificultad para respirar, tos persistente, alergias": "Neumólogo o Alergólogo"
+      };
+
+      const resultado = document.getElementById("resultado");
+      resultado.style.display = "block";
+      resultado.innerHTML = `
+        <h2>🧭 Resultado orientativo</h2>
+        <p><strong>Según tu dolencia principal, podrías consultar con un/a:</strong> ${especialistas[dolencia]}</p>
+        <p>🧘 Este test forma parte de tu ritual de autocuidado.<br>
+        Escuchar al cuerpo es el primer paso para sanar.</p>
+      `;
+
+      document.getElementById("botones-finales").style.display = "block";
+    }
+
+    function regresarIndex() {
+      window.location.href = "index.html";
+    }
+
+    function cerrarTest() {
+      document.body.innerHTML = `
+        <div style="text-align:center; padding:3em; font-size:1.2em;">
+          🌿 Gracias por realizar tu ritual de orientación médica.<br><br>
+          Que tu camino hacia el bienestar esté guiado por escucha, ciencia y cuidado.<br><br>
+          <a href="https://www.blogger.com" style="color:#0078D4;">Volver al blog</a>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
