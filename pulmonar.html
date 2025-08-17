@@ -27,14 +27,14 @@
     }
     #startBtn { background-color: #4caf50; color: white; }
     #stopBtn { background-color: #f44336; color: white; }
-    #timer { font-size: 1.5em; margin-top: 1em; }
-    #result { margin-top: 2em; font-size: 1.2em; font-style: italic; }
-    #info {
+    #timer, #metrics {
+      font-size: 1.3em;
+      margin-top: 1em;
+    }
+    #result {
       margin-top: 2em;
-      background: #f1f8e9;
-      padding: 1em;
-      border-radius: 8px;
-      font-size: 1em;
+      font-size: 1.2em;
+      font-style: italic;
     }
     #accionesFinales {
       margin-top: 3em;
@@ -61,16 +61,9 @@
   <button id="stopBtn" disabled>🔴 Detener</button>
 
   <div id="timer">⏱️ Tiempo actual: 0.0 segundos</div>
+  <div id="metrics">🫁 Respiraciones estimadas: 0<br>❤️ Latidos estimados: 0</div>
   <div id="result"></div>
 
-  <!-- Información fisiológica -->
-  <div id="info">
-    <p><strong>🫁 Respiraciones ideales por minuto:</strong> 12–18 en adultos sanos.</p>
-    <p><strong>❤️ Frecuencia cardíaca en reposo:</strong> 60–100 latidos por minuto.</p>
-    <p><em>Tu cuerpo respira más que aire: respira emociones, ritmos, silencios.</em></p>
-  </div>
-
-  <!-- Botones finales -->
   <div id="accionesFinales">
     <button onclick="location.reload()">🔁 Repetir el test</button>
     <button onclick="history.back()">🔙 Regresar al programa que te llamó</button>
@@ -83,6 +76,7 @@
     const startBtn = document.getElementById('startBtn');
     const stopBtn = document.getElementById('stopBtn');
     const timerDisplay = document.getElementById('timer');
+    const metricsDisplay = document.getElementById('metrics');
     const resultDisplay = document.getElementById('result');
 
     startBtn.onclick = () => {
@@ -92,14 +86,22 @@
       resultDisplay.textContent = "";
       timerInterval = setInterval(() => {
         const elapsed = (Date.now() - startTime) / 1000;
+        const breaths = Math.floor(elapsed * 0.5); // 0.5 respiraciones por segundo
+        const heartbeats = Math.floor(elapsed * 1.2); // 1.2 latidos por segundo
+
         timerDisplay.textContent = `⏱️ Tiempo actual: ${elapsed.toFixed(1)} segundos`;
+        metricsDisplay.innerHTML = `🫁 Respiraciones estimadas: ${breaths}<br>❤️ Latidos estimados: ${heartbeats}`;
       }, 100);
     };
 
     stopBtn.onclick = () => {
       clearInterval(timerInterval);
       const finalTime = (Date.now() - startTime) / 1000;
+      const breaths = Math.floor(finalTime * 0.5);
+      const heartbeats = Math.floor(finalTime * 1.2);
+
       timerDisplay.textContent = `⏱️ Tiempo final: ${finalTime.toFixed(1)} segundos`;
+      metricsDisplay.innerHTML = `🫁 Respiraciones estimadas: ${breaths}<br>❤️ Latidos estimados: ${heartbeats}`;
       startBtn.disabled = false;
       stopBtn.disabled = true;
 
@@ -114,7 +116,7 @@
         message = "Tu capacidad pulmonar es notable. Respiras con el mundo.";
       }
 
-      resultDisplay.innerHTML = `✨ Contuviste la respiración durante <strong>${finalTime.toFixed(1)} segundos</strong>.<br>${message}`;
+      resultDisplay.innerHTML = `✨ Contuviste la respiración durante <strong>${finalTime.toFixed(1)} segundos</strong>.<br>${message}<br><br>🫁 Durante ese tiempo, tu cuerpo habría respirado <strong>${breaths}</strong> veces y tu corazón habría latido <strong>${heartbeats}</strong> veces.`;
     };
   </script>
 
