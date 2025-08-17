@@ -10,6 +10,8 @@
       padding: 2em;
       background: linear-gradient(to bottom, #e0f7fa, #ffffff);
       color: #333;
+      max-width: 700px;
+      margin: auto;
     }
     h1 {
       font-size: 2em;
@@ -27,6 +29,26 @@
     #stopBtn { background-color: #f44336; color: white; }
     #timer { font-size: 1.5em; margin-top: 1em; }
     #result { margin-top: 2em; font-size: 1.2em; font-style: italic; }
+    #info {
+      margin-top: 2em;
+      background: #f1f8e9;
+      padding: 1em;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+    #accionesFinales {
+      margin-top: 3em;
+    }
+    #accionesFinales button {
+      background-color: #8eacbb;
+      margin: 0.5em;
+      padding: 0.7em 1.2em;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -40,6 +62,19 @@
 
   <div id="timer">⏱️ Tiempo actual: 0.0 segundos</div>
   <div id="result"></div>
+
+  <!-- Información fisiológica -->
+  <div id="info">
+    <p><strong>🫁 Respiraciones ideales por minuto:</strong> 12–18 en adultos sanos.</p>
+    <p><strong>❤️ Frecuencia cardíaca en reposo:</strong> 60–100 latidos por minuto.</p>
+    <p><em>Tu cuerpo respira más que aire: respira emociones, ritmos, silencios.</em></p>
+  </div>
+
+  <!-- Botones finales -->
+  <div id="accionesFinales">
+    <button onclick="location.reload()">🔁 Repetir el test</button>
+    <button onclick="history.back()">🔙 Regresar al programa que te llamó</button>
+  </div>
 
   <script>
     let startTime = null;
