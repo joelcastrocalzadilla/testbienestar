@@ -47,6 +47,18 @@
       padding: 1em;
       border-radius: 8px;
     }
+    #accionesFinales {
+      display: none;
+      text-align: center;
+      margin-top: 2em;
+    }
+    #accionesFinales button {
+      background-color: #8eacbb;
+      margin: 0.5em;
+    }
+    #accionesFinales button.repetir {
+      background-color: #4db6ac;
+    }
   </style>
 </head>
 <body>
@@ -81,6 +93,13 @@
 
   <div id="resultado"></div>
 
+  <!-- Botones finales -->
+  <div id="accionesFinales">
+    <p style="font-size: 1.1em;">¿Qué deseas hacer ahora?</p>
+    <button class="repetir" onclick="location.reload()">🔁 Repetir el test</button>
+    <button onclick="history.back()">🔙 Regresar al programa que te llamó</button>
+  </div>
+
   <script>
     function evaluar() {
       const f = parseFloat(document.getElementById('frecuencia').value || 0);
@@ -94,7 +113,6 @@
 
       let score = 0;
 
-      // Reglas discretas inspiradas en el sistema difuso
       if (f > 4) score += 2;
       if (c < 4) score += 2;
       if (e > 70) score += 1;
@@ -126,6 +144,7 @@
       }
 
       document.getElementById('resultado').innerHTML = resultado;
+      document.getElementById('accionesFinales').style.display = 'block';
     }
   </script>
 
