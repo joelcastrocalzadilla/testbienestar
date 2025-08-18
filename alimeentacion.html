@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Test de Hábitos Alimentarios</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fdfaf6;
+      color: #333;
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    h2 { color: #6b4f3b; }
+    .pregunta { margin-bottom: 20px; }
+    .resultado {
+      font-weight: bold;
+      margin-top: 30px;
+      padding: 1em;
+      background-color: #fff8e1;
+      border-left: 4px solid #d4a373;
+    }
+    .titilante {
+      animation: titilar 1s infinite alternate;
+    }
+    @keyframes titilar {
+      from { opacity: 1; }
+      to { opacity: 0.6; }
+    }
+    .test-buttons {
+      margin-top: 30px;
+    }
+    .test-buttons button {
+      margin-right: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #d4a373;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .test-buttons button:hover {
+      background-color: #b07d56;
+    }
+    input[type="number"] {
+      width: 60px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🍽️ Test de Hábitos Alimentarios</h2>
+  <p>Selecciona cuántas porciones consumes al día de cada alimento. Cada elección es un acto de cuidado.</p>
+
+  <form id="form-habitos">
+    <div class="pregunta">Edad: <input type="number" id="edad" min="1" max="120"></div>
+    <div class="pregunta">Peso (kg): <input type="number" id="peso" min="30" max="200"></div>
+
+    <h3>🥩 Proteínas</h3>
+    <div class="pregunta">Huevos (1 ud): <input type="number" id="huevo" value="0" min="0" max="5"></div>
+    <div class="pregunta">Carne (100g): <input type="number" id="carne" value="0" min="0" max="5"></div>
+    <div class="pregunta">Pollo (100g): <input type="number" id="pollo" value="0" min="0" max="5"></div>
+    <div class="pregunta">Pescado (100g): <input type="number" id="pescado" value="0" min="0" max="5"></div>
+    <div class="pregunta">Legumbres (1 taza): <input type="number" id="legumbres" value="0" min="0" max="5"></div>
+
+    <h3>🍚 Carbohidratos</h3>
+    <div class="pregunta">Arroz (1 taza): <input type="number" id="arroz" value="0" min="0" max="5"></div>
+    <div class="pregunta">Pasta (1 taza): <input type="number" id="pasta" value="0" min="0" max="5"></div>
+    <div class="pregunta">Pan (1 rebanada): <input type="number" id="pan" value="0" min="0" max="5"></div>
+    <div class="pregunta">Papas (1 taza): <input type="number" id="papas" value="0" min="0" max="5"></div>
+
+    <h3>🍭 Azúcares simples</h3>
+    <div class="pregunta">Gaseosas (1 vaso): <input type="number" id="gaseosa" value="0" min="0" max="5"></div>
+    <div class="pregunta">Chucherías (1 porción): <input type="number" id="chucheria" value="0" min="0" max="5"></div>
+
+    <h3>💧 Agua</h3>
+    <div class="pregunta">Vasos de agua al día: <input type="number" id="agua" value="0" min="0" max="20"></div>
+
+    <button type="button" onclick="calcular()">Ver resultado</button>
+  </form>
+
+  <div id="resultado" class="resultado titilante"></div>
+
+  <div class="test-buttons">
+    <button onclick="location.reload()">🔁 Repetir el test</button>
+    <button onclick="window.parent.location.href='/ritual-alimentacion'">🚪 Salir</button>
+  </div>
+
+  <script>
+    const alimentos = {
+      huevo: { proteina: 6, calorias: 70 },
+      carne: { proteina: 26, calorias: 250 },
+      pollo: { proteina: 27, calorias: 165 },
+      pescado: { proteina: 22, calorias: 200 },
+      legumbres: { proteina: 18, calorias: 230 },
+      arroz: { proteina: 4, calorias: 200 },
+      pasta: { proteina: 7, calorias: 220 },
+      pan: { proteina: 3, calorias: 80 },
+      papas: { proteina: 2, calorias: 130 },
+      gaseosa: { proteina: 0, calorias: 140 },
+      chucheria: { proteina: 1, calorias: 150 }
+    };
+
+    function calcular() {
+      const peso = parseFloat(document.getElementById("peso").value);
+      const edad = parseInt(document.getElementById("edad").value);
+      const agua = parseInt(document.getElementById("agua").value);
+
+      let totalProteina = 0;
+      let totalCalorias = 0;
+
+      for (let key in alimentos) {
+        const porciones = parseInt(document.getElementById(key).value) || 0;
+        totalProteina += porciones * alimentos[key].proteina;
+        totalCalorias += porciones * alimentos[key].calorias;
+      }
+
+      const proteinaRecomendada = Math.round(peso * 0.8);
+      const caloriasEstimadas = Math.round(peso * 25);
+
+      let mensaje = `👤 Perfil: ${edad} años, ${peso}kg<br>`;
+      mensaje += `💧 Agua: ${agua} vasos/día<br><br>`;
+
+      if (totalProteina > 300 || totalCalorias > 5000) {
+        mensaje += "⚠️ Has elegido un banquete digno de un ejército. ¿Será que estás buscando compensar algo más profundo?<br>";
+        mensaje += "Revisa las porciones seleccionadas para obtener una lectura más realista.<br>";
+      } else {
+        mensaje += `🍗 Has consumido aproximadamente <strong>${totalProteina}g</strong> de proteína y <strong>${totalCalorias} kcal</strong> hoy.<br>`;
+        mensaje += `📘 Tu cuerpo necesita alrededor de <strong>${proteinaRecomendada}g</strong> de proteína y <strong>${caloriasEstimadas} kcal</strong> para mantenerse en equilibrio.<br><br>`;
+
+        if (totalProteina < proteinaRecomendada) mensaje += "⚠️ Tu ingesta de proteínas está por debajo de lo recomendado.<br>";
+        if (totalCalorias < caloriasEstimadas) mensaje += "⚠️ Tu ingesta calórica podría ser insuficiente.<br>";
+        if (agua < 6) mensaje += "⚠️ Aumenta tu consumo de agua para apoyar tus funciones vitales.<br>";
+
+        if (totalProteina >= proteinaRecomendada && totalCalorias >= caloriasEstimadas && agua >= 6) {
+          mensaje += "✅ Tus hábitos muestran un buen equilibrio nutricional. ¡Sigue así!<br>";
+        }
+
+        mensaje += `<br>🌱 Cada alimento que eliges es una forma de cuidarte. ¿Qué podrías sumar mañana con más presencia?`;
+      }
+
+      document.getElementById("resultado").innerHTML = mensaje;
+    }
+  </script>
+</body>
+</html>
