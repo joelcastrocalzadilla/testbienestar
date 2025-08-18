@@ -48,18 +48,25 @@
       border-left: 5px solid #0078D4;
       font-size: 1.1em;
       animation: titilar 1.5s infinite alternate;
+      display: none;
     }
     @keyframes titilar {
       from { opacity: 1; }
       to { opacity: 0.7; }
     }
-    #acciones button {
-      margin: 1em 0.5em;
-      background-color: #444;
-    }
     #acciones {
       margin-top: 2em;
       text-align: center;
+      display: none;
+    }
+    #acciones button {
+      margin: 0.5em;
+      padding: 0.6em 1.2em;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
     footer {
       margin-top: 3em;
@@ -112,9 +119,9 @@
 
   <button onclick="evaluar()">🔍 Ver diagnóstico de sedentarismo</button>
 
-  <div id="resultado" style="display:none;"></div>
+  <div id="resultado"></div>
 
-  <div id="acciones" style="display:none;">
+  <div id="acciones">
     <button onclick="location.reload()">🔄 Reiniciar</button>
     <button onclick="alert('Pronto podrás compartir tu resultado')">📤 Compartir</button>
   </div>
