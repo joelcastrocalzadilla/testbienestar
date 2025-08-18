@@ -47,10 +47,19 @@
       padding: 1em;
       border-left: 5px solid #0078D4;
       font-size: 1.1em;
+      animation: titilar 1.5s infinite alternate;
+    }
+    @keyframes titilar {
+      from { opacity: 1; }
+      to { opacity: 0.7; }
     }
     #acciones button {
       margin: 1em 0.5em;
       background-color: #444;
+    }
+    #acciones {
+      margin-top: 2em;
+      text-align: center;
     }
     footer {
       margin-top: 3em;
@@ -105,7 +114,12 @@
 
   <div id="resultado" style="display:none;"></div>
 
-   <footer>
+  <div id="acciones" style="display:none;">
+    <button onclick="location.reload()">🔄 Reiniciar</button>
+    <button onclick="alert('Pronto podrás compartir tu resultado')">📤 Compartir</button>
+  </div>
+
+  <footer>
     Este test es educativo y no sustituye una evaluación médica profesional.
   </footer>
 
@@ -176,13 +190,7 @@
       `;
       document.getElementById("acciones").style.display = "block";
     }
-
-          }
   </script>
 
 </body>
-
 </html>
-
-
-
