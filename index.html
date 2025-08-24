@@ -19,54 +19,31 @@
       color: #2e7d32;
     }
 
-    .cuadro-central {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      flex-wrap: wrap;
+    .inicio {
+      text-align: center;
       padding: 30px;
-      background-color: #ffffff;
+    }
+
+    .inicio img {
+      width: 300px;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
     }
 
-    .frase-lateral {
-      flex: 1;
-      max-width: 250px;
-      background-color: #fce4ec;
-      padding: 15px;
-      border-radius: 10px;
-      font-size: 17px;
-      color: #880e4f;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: background-color 0.3s ease;
+    .inicio h2 {
+      font-size: 24px;
+      color: #388e3c;
+      margin-bottom: 10px;
     }
 
-    .frase-lateral:hover {
-      background-color: #f8bbd0;
-    }
-
-    .imagen-central {
-      flex: 1;
-      max-width: 300px;
-      text-align: center;
-    }
-
-    .imagen-central img {
-      width: 100%;
-      border-radius: 12px;
-    }
-
-    .descripcion {
-      text-align: center;
-      margin: 40px 20px 20px;
+    .inicio p {
       font-size: 18px;
-      color: #444;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .menu {
+    .opciones {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -89,7 +66,7 @@
       background-color: #dcedc8;
     }
 
-    iframe {
+    #visorTest {
       width: 100%;
       height: 600px;
       border: none;
@@ -122,20 +99,7 @@
     }
 
     @media screen and (max-width: 900px) {
-      .cuadro-central {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .frase-lateral {
-        text-align: center;
-      }
-
-      .imagen-central {
-        max-width: 100%;
-      }
-
-      .menu {
+      .opciones {
         flex-direction: column;
         align-items: center;
       }
@@ -148,68 +112,57 @@
     Respira profundo, este espacio es tuyo 🌼 Cuida tu cuerpo, celebra tu recorrido 🌼
   </header>
 
-  <!-- Cuadro central con imagen y frases -->
-  <div class="cuadro-central">
-    <div class="frase-lateral" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/tu-intimidad-como-espejo-test-femenino.html')">
-      🌸 Tus piernas no solo te sostienen...<br>
-      también te revelan.
-    </div>
-
-    <div class="imagen-central">
-      <img src="https://joelcastrocalzadilla.github.io/testbienestar/pierna.png" alt="Piernas rituales">
-    </div>
-
-    <div class="frase-lateral" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/tu-intimidad-como-espejo-test-femenino.html')">
-      Haz clic y descubre<br>
-      lo que tu cuerpo quiere contarte.
-    </div>
+  <!-- Cuadro central con imagen o visor -->
+  <div class="inicio" id="cuadroCentral">
+    <img src="testbienestar/pierna.png" alt="Piernas rituales" id="imagenPiernas">
+    <h2>🌿 Bienvenido a Tu TEST</h2>
+    <p>Este espacio es una puerta hacia el cuidado, la educación y la presencia digital. Aquí puedes explorar entradas, tests y rituales que acompañan tu bienestar.</p>
   </div>
 
-  <!-- Descripción -->
-  <div class="descripcion">
-    Este espacio es una puerta hacia el cuidado, la educación y la presencia digital.<br>
-    Aquí puedes explorar entradas, tests y rituales que acompañan tu bienestar.
+  <!-- Visor que reemplaza la imagen -->
+  <iframe id="visorTest"></iframe>
+
+  <!-- Botón para cerrar test -->
+  <div id="cerrarTest">
+    <button onclick="cerrarTest()">Cerrar Test y regresar</button>
   </div>
 
-  <!-- Menú de tests -->
-  <div class="menu">
-    <div class="opcion" onclick="abrirTest('https://joelcastrocalzadilla.github.io/testbienestar/test_pulmon.html')">
-      🫁 <strong>Capacidad Pulmonar</strong><br>
+  <!-- Opciones rituales -->
+  <div class="opciones">
+    <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/cuidarte-no-es-lujo-es-lenguaje-el.html')">
+      <strong>🌬️ Capacidad Pulmonar</strong><br>
       Un ritual de respiración consciente.
     </div>
 
-    <div class="opcion" onclick="abrirTest('https://joelcastrocalzadilla.github.io/testbienestar/test_prostata.html')">
-      🧭 <strong>Salud Prostática</strong><br>
+    <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/entre-el-silencio-y-el-cuidado-como.html')">
+      <strong>🩺 Salud Prostática</strong><br>
       Una brújula educativa.
     </div>
 
     <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/conociendo-tu-cuerpo-medico.html')">
-      🩺 <strong>Orientación Médica</strong><br>
+      <strong>🩺 Orientación Médica</strong><br>
       ¿Qué especialista necesitas?
     </div>
 
     <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/tu-intimidad-como-espejo-test-femenino.html')">
-      🌸 <strong>Test íntimo Femenino</strong><br>
+      <strong>🌸 Test Íntimo Femenino</strong><br>
       Escucha tu cuerpo con respeto.
     </div>
 
     <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/azucar-energia-y-equilibrio-test.html')">
-      🍬 <strong>Metabolismo del Azúcar</strong><br>
+      <strong>🍬 Metabolismo del Azúcar</strong><br>
       Reflexión sobre tu energía.
     </div>
 
     <div class="opcion" onclick="abrirTest('https://joelcastrocalzadilla.github.io/testbienestar/test_sedentarismo.html')">
-      🪑 <strong>¿Qué tan sedentario eres?</strong><br>
+      <strong>🪑 ¿Qué tan sedentario eres?</strong><br>
       Evalúa tu movimiento.
     </div>
-  </div>
 
-  <!-- Visor de test -->
-  <iframe id="visorTest"></iframe>
-
-  <!-- Botón de cierre -->
-  <div id="cerrarTest">
-    <button onclick="cerrarTest()">Cerrar Test y regresar</button>
+    <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/tu-ritmo-interno-como-late-tu-corazon.html')">
+      <strong>❤️ ¿Y qué tal está tu corazón?</strong><br>
+      Explora tu salud cardiovascular.
+    </div>
   </div>
 
   <!-- Pie de página -->
@@ -220,6 +173,7 @@
   <!-- Script funcional -->
   <script>
     function abrirTest(url) {
+      document.getElementById("cuadroCentral").style.display = "none";
       document.getElementById("visorTest").src = url;
       document.getElementById("visorTest").style.display = "block";
       document.getElementById("cerrarTest").style.display = "block";
@@ -227,6 +181,7 @@
     }
 
     function cerrarTest() {
+      document.getElementById("cuadroCentral").style.display = "block";
       document.getElementById("visorTest").style.display = "none";
       document.getElementById("cerrarTest").style.display = "none";
       document.getElementById("visorTest").src = "";
