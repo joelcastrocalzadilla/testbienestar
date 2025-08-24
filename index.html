@@ -2,147 +2,190 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Bienvenido a Tu TEST</title>
+  <title>Inicio Ritual – Blogger Integrado</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #ffffff;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #f0f9f9, #e6f2ec);
+      color: #333;
+    }
+
+    .marquesina {
+      background-color: #81c784;
+      color: white;
+      padding: 1em;
+      font-size: 1.2em;
+      overflow: hidden;
+      position: relative;
+      height: 2.5em;
+      display: flex;
+      align-items: center;
+    }
+    .marquesina span {
+      position: absolute;
+      white-space: nowrap;
+      animation: mover 30s linear infinite;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    @keyframes mover {
+      0% { left: 100%; }
+      100% { left: -100%; }
+    }
+
+    .contenedor {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2em;
+    }
+
+    .inicio {
+      background-color: #ffffffcc;
+      padding: 1em;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
       text-align: center;
     }
-
-    header {
-      background-color: #c8e6c9;
-      padding: 20px;
-      font-size: 20px;
-      color: #2e7d32;
+    .inicio img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1em;
+      max-height: 400px;
+      object-fit: cover;
     }
 
-    .imagen-central {
-      margin-top: 30px;
+    .opciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+      margin-top: 2em;
     }
-
-    .imagen-central img {
-      width: 300px;
-      border-radius: 10px;
-    }
-
-    .frase-central {
-      font-size: 18px;
-      color: #444;
-      margin-top: 10px;
-    }
-
     .opcion {
-      background-color: #e8f5e9;
-      margin: 15px auto;
-      padding: 15px;
-      border-radius: 10px;
-      max-width: 500px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      background-color: #e0f2f1;
+      padding: 1em;
+      border-radius: 8px;
       cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 280px;
+      text-align: center;
     }
-
     .opcion:hover {
-      background-color: #dcedc8;
+      transform: translateY(-5px);
+      background-color: #c8e6c9;
     }
 
-    iframe {
+    #visorTest {
       width: 100%;
       height: 600px;
-      border: none;
+      border: 2px solid #81c784;
+      border-radius: 12px;
+      margin-top: 2em;
       display: none;
-      margin-top: 20px;
     }
 
     #cerrarTest {
+      text-align: center;
+      margin-top: 1em;
       display: none;
-      margin: 20px;
     }
-
     #cerrarTest button {
-      background-color: #4caf50;
+      padding: 0.6em 1.2em;
+      background-color: #388e3c;
       color: white;
-      padding: 10px 20px;
-      font-size: 16px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
     }
 
     #mensaje-final {
-      margin: 40px 20px;
+      display: none;
+      margin-top: 2em;
+      text-align: center;
     }
 
     footer {
-      background-color: #f1f8e9;
-      padding: 20px;
-      font-size: 14px;
-      color: #555;
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 1em;
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 2em;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    Respira profundo, este espacio es tuyo 🌟 Cuida tu cuerpo, celebra tu recorrido 🌟
-  </header>
+  <div class="marquesina">
+    <span>✨ Respira profundo, este espacio es tuyo ✨ Cuida tu cuerpo, celebra tu recorrido ✨</span>
+  </div>
 
-  <div class="imagen-central">
-    <img src="https://joelcastrocalzadilla.github.io/testbienestar/pierna.png" alt="Imagen ritual de piernas">
-    <div class="frase-central">
-      TEST CON SENTIDO<br>
-      Tu piel. Tu cuerpo. Tu salud. Tu intimidad... sin tabú.
+  <div class="contenedor">
+    <div class="inicio">
+      <img src="https://joelcastrocalzadilla.github.io/testbienestar/pierna.png" alt="Imagen ritual de piernas">
+    <h2>🌿 Bienvenido a Tu TEST</h2>
+      <p>Este espacio es una puerta hacia el cuidado, la educación y la presencia digital. Aquí puedes explorar entradas, tests y rituales que acompañan tu bienestar.</p>
     </div>
+
+    <!-- Opciones rituales -->
+    <div class="opciones">
+      <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/cuidarte-no-es-lujo-es-lenguaje-el.html')">
+        <strong>🌬️ Capacidad Pulmonar</strong><br>
+        Un ritual de respiración consciente.
+      </div>
+
+      <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/entre-el-silencio-y-el-cuidado-como.html')">
+        <strong>🩺 Salud Prostática</strong><br>
+        Una brújula educativa.
+      </div>
+
+      <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/conociendo-tu-cuerpo-medico.html')">
+        <strong>🩺 Orientación Médica</strong><br>
+        ¿Qué especialista necesitas?
+      </div>
+
+      <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/tu-intimidad-como-espejo-test-femenino.html')">
+        <strong>🌸 Test Íntimo Femenino</strong><br>
+        Escucha tu cuerpo con respeto.
+      </div>
+
+      <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/azucar-energia-y-equilibrio-test.html')">
+        <strong>🍬 Metabolismo del Azúcar</strong><br>
+        Reflexión sobre tu energía.
+      </div>
+
+      <div class="opcion" onclick="abrirTest('https://joelcastrocalzadilla.github.io/testbienestar/test_sedentarismo.html')">
+        <strong>🪑 ¿Qué tan sedentario eres?</strong><br>
+        Evalúa tu movimiento.
+      </div>
+
+      <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/tu-ritmo-interno-como-late-tu-corazon.html')">
+        <strong>❤️ ¿Y qué tal está tu corazón?</strong><br>
+        Explora tu salud cardiovascular.
+      </div>
+    </div>
+
+    <!-- Visor central -->
+    <iframe id="visorTest"></iframe>
+
+    <!-- Botón de cierre -->
+    <div id="cerrarTest">
+      <button onclick="cerrarTest()">Cerrar Test y regresar</button>
+    </div>
+
+    <!-- Mensaje final ritual -->
+    <div id="mensaje-final">
+      <h2>🌟 Has completado tu ritual</h2>
+      <p>Gracias por escucharte. Este recorrido es un acto de amor propio. Puedes volver cuando lo necesites.</p>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+      <p>Esta app no reemplaza el diagnóstico médico. Es una herramienta educativa para fomentar el autocuidado y la escucha corporal.</p>
+    </footer>
   </div>
 
-  <!-- Opciones de test -->
-  <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/conociendo-tu-cuerpo-medico.html')">
-    <strong>🩺 Orientación Médica</strong><br>
-    ¿Qué especialista necesitas?
-  </div>
-
-  <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/tu-intimidad-como-espejo-test-femenino.html')">
-    <strong>🌸 Test Íntimo Femenino</strong><br>
-    Escucha tu cuerpo con respeto.
-  </div>
-
-  <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/azucar-energia-y-equilibrio-test.html')">
-    <strong>🍬 Metabolismo del Azúcar</strong><br>
-    Reflexión sobre tu energía.
-  </div>
-
-  <div class="opcion" onclick="abrirTest('https://joelcastrocalzadilla.github.io/testbienestar/test_sedentarismo.html')">
-    <strong>🪑 ¿Qué tan sedentario eres?</strong><br>
-    Evalúa tu movimiento.
-  </div>
-
-  <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/tu-ritmo-interno-como-late-tu-corazon.html')">
-    <strong>❤️ ¿Y qué tal está tu corazón?</strong><br>
-    Explora tu salud cardiovascular.
-  </div>
-
-  <!-- Visor central -->
-  <iframe id="visorTest"></iframe>
-
-  <!-- Botón de cierre -->
-  <div id="cerrarTest">
-    <button onclick="cerrarTest()">Cerrar Test y regresar</button>
-  </div>
-
-  <!-- Mensaje final ritual -->
-  <div id="mensaje-final">
-    <h2>🌟 Has completado tu ritual</h2>
-    <p>Gracias por escucharte. Este recorrido es un acto de amor propio. Puedes volver cuando lo necesites.</p>
-  </div>
-
-  <!-- Pie de página -->
-  <footer>
-    Esta app no reemplaza el diagnóstico médico. Es una herramienta educativa para fomentar el autocuidado y la escucha corporal.
-  </footer>
-
-  <!-- Script funcional -->
   <script>
     function abrirTest(url) {
       document.getElementById("visorTest").src = url;
