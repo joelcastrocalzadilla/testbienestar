@@ -11,17 +11,21 @@
       padding: 0;
     }
 
+    .contenedor {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
     .opcion {
       background-color: #c8e6c9;
-      margin: 10px;
+      margin: 10px auto;
       padding: 15px;
       border-radius: 10px;
       cursor: pointer;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
       transition: transform 0.2s;
       max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .opcion:hover {
@@ -31,10 +35,11 @@
 
     #visorTest {
       width: 100%;
+      max-width: 800px;
       height: 600px;
       border: none;
       display: none;
-      margin-top: 20px;
+      margin: 20px auto;
     }
 
     #cerrarTest {
@@ -131,50 +136,55 @@
   <a href="https://buscandosaludhoy.blogspot.com/2025/08/ritual-de-cumpleanos.html" class="boton-lateral boton-izq">🎁 Ritual de cumpleaños</a>
   <a href="https://buscandosaludhoy.blogspot.com/2025/08/ritual-en-pareja.html" class="boton-lateral boton-der">💞 Ritual en pareja</a>
 
-  <!-- Opciones de test -->
-  <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/conociendo-tu-cuerpo-medico.html')">
-    <strong>🩺 Orientación Médica</strong><br>
-    ¿Qué especialista necesitas?
+  <!-- Contenedor central -->
+  <div class="contenedor">
+
+    <!-- Opciones de test -->
+    <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/conociendo-tu-cuerpo-medico.html')">
+      <strong>🩺 Orientación Médica</strong><br>
+      ¿Qué especialista necesitas?
+    </div>
+
+    <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/tu-intimidad-como-espejo-test-femenino.html')">
+      <strong>🌸 Test Íntimo Femenino</strong><br>
+      Escucha tu cuerpo con respeto.
+    </div>
+
+    <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/azucar-energia-y-equilibrio-test.html')">
+      <strong>🍬 Metabolismo del Azúcar</strong><br>
+      Reflexión sobre tu energía.
+    </div>
+
+    <div class="opcion" onclick="abrirTest('https://joelcastrocalzadilla.github.io/testbienestar/test_sedentarismo.html')">
+      <strong>🪑 ¿Qué tan sedentario eres?</strong><br>
+      Evalúa tu movimiento.
+    </div>
+
+    <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/tu-ritmo-interno-como-late-tu-corazon.html')">
+      <strong>❤️ ¿Y qué tal está tu corazón?</strong><br>
+      Explora tu salud cardiovascular.
+    </div>
+
+    <!-- Visor central -->
+    <iframe id="visorTest"></iframe>
+
+    <!-- Botón de cierre -->
+    <div id="cerrarTest">
+      <button onclick="cerrarTest()">Cerrar Test y regresar</button>
+    </div>
+
+    <!-- Mensaje final ritual -->
+    <div id="mensaje-final">
+      <h2>🌟 Has completado tu ritual</h2>
+      <p>Gracias por escucharte. Este recorrido es un acto de amor propio. Puedes volver cuando lo necesites.</p>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+      <p>Esta app no reemplaza el diagnóstico médico. Es una herramienta educativa para fomentar el autocuidado y la escucha corporal.</p>
+    </footer>
+
   </div>
-
-  <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/tu-intimidad-como-espejo-test-femenino.html')">
-    <strong>🌸 Test Íntimo Femenino</strong><br>
-    Escucha tu cuerpo con respeto.
-  </div>
-
-  <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/azucar-energia-y-equilibrio-test.html')">
-    <strong>🍬 Metabolismo del Azúcar</strong><br>
-    Reflexión sobre tu energía.
-  </div>
-
-  <div class="opcion" onclick="abrirTest('https://joelcastrocalzadilla.github.io/testbienestar/test_sedentarismo.html')">
-    <strong>🪑 ¿Qué tan sedentario eres?</strong><br>
-    Evalúa tu movimiento.
-  </div>
-
-  <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/tu-ritmo-interno-como-late-tu-corazon.html')">
-    <strong>❤️ ¿Y qué tal está tu corazón?</strong><br>
-    Explora tu salud cardiovascular.
-  </div>
-
-  <!-- Visor central -->
-  <iframe id="visorTest"></iframe>
-
-  <!-- Botón de cierre -->
-  <div id="cerrarTest">
-    <button onclick="cerrarTest()">Cerrar Test y regresar</button>
-  </div>
-
-  <!-- Mensaje final ritual -->
-  <div id="mensaje-final">
-    <h2>🌟 Has completado tu ritual</h2>
-    <p>Gracias por escucharte. Este recorrido es un acto de amor propio. Puedes volver cuando lo necesites.</p>
-  </div>
-
-  <!-- Pie de página -->
-  <footer>
-    <p>Esta app no reemplaza el diagnóstico médico. Es una herramienta educativa para fomentar el autocuidado y la escucha corporal.</p>
-  </footer>
 
   <!-- Script funcional -->
   <script>
