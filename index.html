@@ -2,144 +2,128 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Inicio Ritual – Blogger Integrado</title>
+  <title>TEST CON SENTIDO</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #f0f9f9, #e6f2ec);
+      background-color: #ffffff;
       color: #333;
     }
 
-    .marquesina {
-      background-color: #81c784;
-      color: white;
-      padding: 1em;
-      font-size: 1.2em;
-      overflow: hidden;
-      position: relative;
-      height: 2.5em;
-      display: flex;
-      align-items: center;
-    }
-    .marquesina span {
-      position: absolute;
-      white-space: nowrap;
-      animation: mover 30s linear infinite;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    }
-    @keyframes mover {
-      0% { left: 100%; }
-      100% { left: -100%; }
+    header {
+      background-color: #c8e6c9;
+      padding: 20px;
+      text-align: center;
+      font-size: 20px;
+      color: #2e7d32;
     }
 
     .contenedor {
-      max-width: 1200px;
-      margin: auto;
-      padding: 2em;
-    }
-
-    .inicio {
-      background-color: #ffffffcc;
-      padding: 1em;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      text-align: center;
-    }
-    .inicio img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 1em;
-      max-height: 400px;
-      object-fit: cover;
-    }
-
-    .opciones {
       display: flex;
       flex-wrap: wrap;
-      gap: 1em;
       justify-content: center;
-      margin-top: 2em;
-    }
-    .opcion {
-      background-color: #e0f2f1;
-      padding: 1em;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      width: 280px;
-      text-align: center;
-    }
-    .opcion:hover {
-      transform: translateY(-5px);
-      background-color: #c8e6c9;
+      align-items: flex-start;
+      padding: 30px;
+      gap: 40px;
     }
 
-    #visorTest {
+    .imagen {
+      flex: 1;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .imagen img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .frase {
+      margin-top: 15px;
+      font-size: 18px;
+      color: #b71c1c;
+    }
+
+    .menu {
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .opcion {
+      background-color: #e8f5e9;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .opcion:hover {
+      background-color: #dcedc8;
+    }
+
+    iframe {
       width: 100%;
       height: 600px;
-      border: 2px solid #81c784;
-      border-radius: 12px;
-      margin-top: 2em;
+      border: none;
       display: none;
+      margin-top: 20px;
     }
 
     #cerrarTest {
-      text-align: center;
-      margin-top: 1em;
       display: none;
+      text-align: center;
+      margin: 20px;
     }
+
     #cerrarTest button {
-      padding: 0.6em 1.2em;
-      background-color: #388e3c;
+      background-color: #4caf50;
       color: white;
+      padding: 10px 20px;
+      font-size: 16px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
     }
 
-    #mensaje-final {
-      display: none;
-      margin-top: 2em;
+    footer {
+      background-color: #f1f8e9;
+      padding: 20px;
       text-align: center;
+      font-size: 14px;
+      color: #555;
     }
 
-    footer {
-      background-color: #f0f0f0;
-      text-align: center;
-      padding: 1em;
-      font-size: 0.9em;
-      color: #666;
-      margin-top: 2em;
+    @media screen and (max-width: 900px) {
+      .contenedor {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .imagen, .menu {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="marquesina">
-    <span>✨ Respira profundo, este espacio es tuyo ✨ Cuida tu cuerpo, celebra tu recorrido ✨</span>
-  </div>
+  <header>
+    Respira profundo, este espacio es tuyo 🌼 Cuida tu cuerpo, celebra tu recorrido 🌼
+  </header>
 
   <div class="contenedor">
-    <div class="inicio">
-      <img src="testbienestar/pierna.png" />
-      <h2>🌿 Bienvenido a Tu TEST</h2>
-      <p>Este espacio es una puerta hacia el cuidado, la educación y la presencia digital. Aquí puedes explorar entradas, tests y rituales que acompañan tu bienestar.</p>
+    <div class="imagen">
+      <img src="https://joelcastrocalzadilla.github.io/testbienestar/pierna.png" alt="Piernas rituales">
+      <div class="frase">
+        TEST CON SENTIDO<br>
+        Tu piel. Tu cuerpo. Tu salud. Tu intimidad... sin tabú.
+      </div>
     </div>
 
-    <!-- Opciones rituales -->
-    <div class="opciones">
-      <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/cuidarte-no-es-lujo-es-lenguaje-el.html')">
-        <strong>🌬️ Capacidad Pulmonar</strong><br>
-        Un ritual de respiración consciente.
-      </div>
-
-      <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/entre-el-silencio-y-el-cuidado-como.html')">
-        <strong>🩺 Salud Prostática</strong><br>
-        Una brújula educativa.
-      </div>
-
+    <div class="menu">
       <div class="opcion" onclick="abrirTest('https://buscandosaludhoy.blogspot.com/2025/08/conociendo-tu-cuerpo-medico.html')">
         <strong>🩺 Orientación Médica</strong><br>
         ¿Qué especialista necesitas?
@@ -165,26 +149,17 @@
         Explora tu salud cardiovascular.
       </div>
     </div>
-
-    <!-- Visor central -->
-    <iframe id="visorTest"></iframe>
-
-    <!-- Botón de cierre -->
-    <div id="cerrarTest">
-      <button onclick="cerrarTest()">Cerrar Test y regresar</button>
-    </div>
-
-    <!-- Mensaje final ritual -->
-    <div id="mensaje-final">
-      <h2>🌟 Has completado tu ritual</h2>
-      <p>Gracias por escucharte. Este recorrido es un acto de amor propio. Puedes volver cuando lo necesites.</p>
-    </div>
-
-    <!-- Pie de página -->
-    <footer>
-      <p>Esta app no reemplaza el diagnóstico médico. Es una herramienta educativa para fomentar el autocuidado y la escucha corporal.</p>
-    </footer>
   </div>
+
+  <iframe id="visorTest"></iframe>
+
+  <div id="cerrarTest">
+    <button onclick="cerrarTest()">Cerrar Test y regresar</button>
+  </div>
+
+  <footer>
+    Esta app no reemplaza el diagnóstico médico. Es una herramienta educativa para fomentar el autocuidado y la escucha corporal.
+  </footer>
 
   <script>
     function abrirTest(url) {
