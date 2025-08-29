@@ -152,28 +152,33 @@ No reemplaza una consulta médica, pero puede ayudarte a escuchar tu cuerpo con 
     let mensaje = "";
     if (fisico >= 3) {
       mensaje = `
-        <strong>Tu cuerpo podría estar mostrando señales compatibles con hipertensión leve o desequilibrio cardiovascular.</strong>
-        <p>Recomendaciones: chequeo médico, reducir sal, aumentar actividad física suave.</p>
+        <strong>🌡️ Señales físicas detectadas</strong><br>
+        Tu cuerpo podría estar mostrando señales compatibles con hipertensión leve o desequilibrio cardiovascular.<br>
+        <em>Recomendaciones:</em> chequeo médico, reducir sal, aumentar actividad física suave.
       `;
     } else if (emocional >= 2) {
       mensaje = `
-        <strong>Tu corazón parece estar bajo tensión emocional.</strong>
-        <p>Recomendaciones: rituales de descanso, respiración consciente, espacios de expresión.</p>
+        <strong>🧘 Tensiones emocionales activas</strong><br>
+        Tu corazón parece estar bajo tensión emocional.<br>
+        <em>Recomendaciones:</em> rituales de descanso, respiración consciente, espacios de expresión.
       `;
     } else if (habitos >= 2) {
       mensaje = `
-        <strong>Tus hábitos podrían estar afectando tu equilibrio cardíaco.</strong>
-        <p>Recomendaciones: revisar alimentación, moverse más, cuidar el sueño.</p>
+        <strong>🍟 Hábitos que afectan el ritmo</strong><br>
+        Tus hábitos podrían estar afectando tu equilibrio cardíaco.<br>
+        <em>Recomendaciones:</em> revisar alimentación, moverse más, cuidar el sueño.
       `;
     } else if (historia >= 2) {
       mensaje = `
-        <strong>Tu historia familiar y médica sugiere que es importante monitorear tu corazón.</strong>
-        <p>Recomendaciones: chequeos regulares, prevención activa, escucha corporal.</p>
+        <strong>📜 Historia familiar relevante</strong><br>
+        Tu historia médica sugiere que es importante monitorear tu corazón.<br>
+        <em>Recomendaciones:</em> chequeos regulares, prevención activa, escucha corporal.
       `;
     } else {
       mensaje = `
-        <strong>No se detectan señales relevantes en este momento.</strong>
-        <p>Tu corazón parece estar en equilibrio. Mantén tus rutinas de cuidado y escucha interna.</p>
+        <strong>💓 Equilibrio actual</strong><br>
+        No se detectan señales relevantes en este momento.<br>
+        Tu corazón parece estar en equilibrio. Mantén tus rutinas de cuidado y escucha interna.
       `;
     }
 
@@ -182,7 +187,8 @@ No reemplaza una consulta médica, pero puede ayudarte a escuchar tu cuerpo con 
     document.getElementById("resultado").innerHTML = `<h2>💬 Resultado:</h2>${mensaje}`;
     document.getElementById("acciones").style.display = "block";
   });
-  function cerrarTest() {
+
+    function cerrarTest() {
     document.body.innerHTML = `
       <div style="text-align:center; padding:3em; font-size:1.2em; background:#fff0f5;">
         💓 Gracias por escuchar el latido de tu cuerpo.<br><br>
