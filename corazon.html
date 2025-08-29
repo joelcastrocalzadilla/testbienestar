@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHXVYWNTKQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XHXVYWNTKQ');
-  </script>
-
   <meta charset="UTF-8">
   <title>💓 ¿Cómo late tu corazón?</title>
   <style>
@@ -52,6 +43,7 @@
       padding: 1em;
       border-left: 5px solid #d81b60;
       font-size: 1.1em;
+      display: none;
     }
     #acciones {
       display: none;
@@ -125,7 +117,7 @@ No reemplaza una consulta médica, pero puede ayudarte a escuchar tu cuerpo con 
   <button type="submit">💠 Evaluar mi resultado</button>
 </form>
 
-<div id="resultado" style="display:none;"></div>
+<div id="resultado"></div>
 
 <div id="acciones">
   <button onclick="location.reload()">🔁 Repetir el test</button>
@@ -185,203 +177,27 @@ No reemplaza una consulta médica, pero puede ayudarte a escuchar tu cuerpo con 
       `;
     }
 
+    document.getElementById("heart_form").style.display = "none";
     document.getElementById("resultado").style.display = "block";
     document.getElementById("resultado").innerHTML = `<h2>💬 Resultado:</h2>${mensaje}`;
     document.getElementById("acciones").style.display = "block";
   });
 
- <!DOCTYPE html>
-<html lang="es">
-<head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHXVYWNTKQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XHXVYWNTKQ');
-  </script>
-
-  <meta charset="UTF-8">
-  <title>💓 ¿Cómo late tu corazón?</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      max-width: 800px;
-      margin: auto;
-      padding: 2em;
-      background: #fff0f5;
-      color: #333;
-    }
-    h1 {
-      text-align: center;
-      font-size: 2em;
-    }
-    label {
-      display: block;
-      margin-top: 1em;
-      font-weight: bold;
-    }
-    .radio-group {
-      margin-top: 0.5em;
-    }
-    input[type="radio"] {
-      margin-right: 0.5em;
-    }
-    button {
-      margin-top: 2em;
-      padding: 0.8em 1.5em;
-      font-size: 1em;
-      background-color: #d81b60;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #resultado {
-      margin-top: 2em;
-      background: #fce4ec;
-      padding: 1em;
-      border-left: 5px solid #d81b60;
-      font-size: 1.1em;
-    }
-    #acciones {
-      display: none;
-      text-align: center;
-      margin-top: 2em;
-    }
-    #acciones button {
-      margin: 1em 0.5em;
-      background-color: #444;
-      color: white;
-      padding: 0.6em 1.2em;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #acciones button:hover {
-      background-color: #222;
-    }
-    footer {
-      margin-top: 3em;
-      font-size: 0.9em;
-      color: #666;
-      text-align: center;
-      border-top: 1px solid #ccc;
-      padding-top: 1em;
-    }
-  </style>
-</head>
-<body>
-
-<h1>💓 ¿Cómo late tu corazón?</h1>
-<p>Este test es una exploración educativa sobre tu salud cardiovascular y emocional.<br>
-No reemplaza una consulta médica, pero puede ayudarte a escuchar tu cuerpo con más claridad.</p>
-
-<form id="heart_form">
-  <h2>Responde con sinceridad:</h2>
-
-  <!-- Preguntas -->
-  <label>¿Has sentido palpitaciones o latidos acelerados sin razón aparente?</label>
-  <div class="radio-group"><input type="radio" name="q1" value="Sí">Sí <input type="radio" name="q1" value="No">No</div>
-
-  <label>¿Has tenido dolores de cabeza frecuentes o sensación de presión?</label>
-  <div class="radio-group"><input type="radio" name="q2" value="Sí">Sí <input type="radio" name="q2" value="No">No</div>
-
-  <label>¿Sientes mareos o fatiga sin causa clara?</label>
-  <div class="radio-group"><input type="radio" name="q3" value="Sí">Sí <input type="radio" name="q3" value="No">No</div>
-
-  <label>¿Duermes mal o te despiertas con tensión?</label>
-  <div class="radio-group"><input type="radio" name="q4" value="Sí">Sí <input type="radio" name="q4" value="No">No</div>
-
-  <label>¿Consumes alimentos muy salados o procesados con frecuencia?</label>
-  <div class="radio-group"><input type="radio" name="q5" value="Sí">Sí <input type="radio" name="q5" value="No">No</div>
-
-  <label>¿Tienes antecedentes familiares de hipertensión o enfermedades cardíacas?</label>
-  <div class="radio-group"><input type="radio" name="q6" value="Sí">Sí <input type="radio" name="q6" value="No">No</div>
-
-  <label>¿Has sentido opresión en el pecho o dificultad para respirar?</label>
-  <div class="radio-group"><input type="radio" name="q7" value="Sí">Sí <input type="radio" name="q7" value="No">No</div>
-
-  <label>¿Llevas una vida sedentaria o con poca actividad física?</label>
-  <div class="radio-group"><input type="radio" name="q8" value="Sí">Sí <input type="radio" name="q8" value="No">No</div>
-
-  <label>¿Sientes que el estrés te domina o te cuesta relajarte?</label>
-  <div class="radio-group"><input type="radio" name="q9" value="Sí">Sí <input type="radio" name="q9" value="No">No</div>
-
-  <label>¿Tomas medicamentos para la presión o el corazón?</label>
-  <div class="radio-group"><input type="radio" name="q10" value="Sí">Sí <input type="radio" name="q10" value="No">No</div>
-
-  <label><input type="checkbox" id="consent"> ✅ Entiendo que este test es educativo y no reemplaza una consulta médica.</label>
-
-  <button type="submit">💠 Evaluar mi resultado</button>
-</form>
-
-<div id="resultado" style="display:none;"></div>
-
-<div id="acciones">
-  <button onclick="location.reload()">🔁 Repetir el test</button>
-  <button onclick="cerrarTest()">🚪 Regresar al blog</button>
-</div>
-
-<footer>
-  Este test es educativo y no guarda tus respuestas. Tu cuerpo merece respeto, escucha y cuidado.
-</footer>
-
-<script>
-  document.getElementById("heart_form").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const consent = document.getElementById("consent").checked;
-    if (!consent) {
-      alert("Por favor, acepta el aviso educativo para continuar.");
-      return;
-    }
-
-    const respuestas = {};
-    for (let i = 1; i <= 10; i++) {
-      const val = document.querySelector(`input[name="q${i}"]:checked`);
-      respuestas[`q${i}`] = val ? val.value : "No";
-    }
-
-    const fisico = ["q1", "q2", "q3", "q7"].filter(q => respuestas[q] === "Sí").length;
-    const emocional = ["q4", "q9", "q7"].filter(q => respuestas[q] === "Sí").length;
-    const habitos = ["q5", "q8"].filter(q => respuestas[q] === "Sí").length;
-    const historia = ["q6", "q10"].filter(q => respuestas[q] === "Sí").length;
-
-    let mensaje = "";
-    if (fisico >= 3) {
-      mensaje = `
-        <strong>Tu cuerpo podría estar mostrando señales compatibles con hipertensión leve o desequilibrio cardiovascular.</strong>
-        <p>Recomendaciones: chequeo médico, reducir sal, aumentar actividad física suave.</p>
-      `;
-    } else if (emocional >= 2) {
-      mensaje = `
-        <strong>Tu corazón parece estar bajo tensión emocional.</strong>
-        <p>Recomendaciones: rituales de descanso, respiración consciente, espacios de expresión.</p>
-      `;
-    } else if (habitos >= 2) {
-      mensaje = `
-        <strong>Tus hábitos podrían estar afectando tu equilibrio cardíaco.</strong>
-        <p>Recomendaciones: revisar alimentación, moverse más, cuidar el sueño.</p>
-      `;
-    } else if (historia >= 2) {
-      mensaje = `
-        <strong>Tu historia familiar y médica sugiere que es importante monitorear tu corazón.</strong>
-        <p>Recomendaciones: chequeos regulares, prevención activa, escucha corporal.</p>
-      `;
-    } else {
-      mensaje = `
-        <strong>No se detectan señales relevantes en este momento.</strong>
-        <p>Tu corazón parece estar en equilibrio. Mantén tus rutinas de cuidado y escucha interna.</p>
-      `;
-    }
-
-    document.getElementById("resultado").style.display = "block";
-    document.getElementById("resultado").innerHTML = `<h2>💬 Resultado:</h2>${mensaje}`;
-    document.getElementById("acciones").style.display = "block";
-  });
-
+ <script>
   function cerrarTest() {
     document.body.innerHTML = `
-      <div style="text-align:center; padding:3em;
+      <div style="text-align:center; padding:3em; font-size:1.2em; background:#fff0f5;">
+        💓 Gracias por escuchar el latido de tu cuerpo.<br><br>
+        <em>Tu corazón no solo bombea sangre, también guarda memorias, emociones y ritmos sagrados.</em><br><br>
+        Que cada día sea una oportunidad para cuidarlo con conciencia y ternura.<br><br>
+        <a href="https://buscandosaludhoy.blogspot.com/2025/08/tu-ritmo-interno-como-late-tu-corazon.html" 
+           style="color:#d81b60; font-weight:bold; text-decoration:none;">
+          ⬅️ Volver al blog
+        </a>
+      </div>
+    `;
+  }
+</script>
+
+</body>
+</html>
