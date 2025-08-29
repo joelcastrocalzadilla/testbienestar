@@ -11,166 +11,164 @@
   gtag('config', 'G-XHXVYWNTKQ');
 </script>
 
-  <meta charset="UTF-8">
-  <title>¿Cómo está tu azúcar?</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #fff8e1, #ffffff);
-      padding: 2em;
-      color: #333;
-      max-width: 800px;
-      margin: auto;
-    }
-    h1 {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 0.5em;
-    }
-    label {
-      display: block;
-      margin-top: 1em;
-      font-weight: bold;
-    }
-    input[type="range"] {
-      width: 100%;
-    }
-    .slider-value {
-      font-size: 0.9em;
-      color: #555;
-    }
-    button {
-      margin-top: 2em;
-      padding: 0.8em 1.5em;
-      font-size: 1.1em;
-      background-color: #ff9800;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    #resultado {
-      margin-top: 2em;
-      font-size: 1.2em;
-      font-style: italic;
-      background: #fff3e0;
-      padding: 1em;
-      border-radius: 8px;
-    }
-    hr {
-      margin: 2em 0;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>¿Cómo está tu azúcar?</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #fff8e1, #ffffff);
+    padding: 2em;
+    color: #333;
+    max-width: 800px;
+    margin: auto;
+  }
+  h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+  label {
+    display: block;
+    margin-top: 1em;
+    font-weight: bold;
+  }
+  input[type="range"] {
+    width: 100%;
+  }
+  .slider-value {
+    font-size: 0.9em;
+    color: #555;
+  }
+  button {
+    margin-top: 2em;
+    padding: 0.8em 1.5em;
+    font-size: 1.1em;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  #resultado {
+    margin-top: 2em;
+    font-size: 1.2em;
+    font-style: italic;
+    background: #fff3e0;
+    padding: 1em;
+    border-radius: 8px;
+  }
+  hr {
+    margin: 2em 0;
+  }
+</style>
 </head>
 <body>
 
-  <h1>🍬 ¿Cómo está tu azúcar?</h1>
-  <p>Este test educativo te ayuda a reflexionar sobre tu metabolismo del azúcar.  
-  No diagnostica, pero orienta con empatía y ciencia.</p>
+<h1>🍬 ¿Cómo está tu azúcar?</h1>
+<p>Este test educativo te ayuda a reflexionar sobre tu metabolismo del azúcar.  
+No diagnostica, pero orienta con empatía y ciencia.</p>
 
-  <hr>
-  <h2>📝 Responde con sinceridad</h2>
+<hr>
+<h2>📝 Responde con sinceridad</h2>
 
-  <div id="preguntas"></div>
+<div id="preguntas"></div>
 
-  <button onclick="evaluar()">📊 Evaluar</button>
+<button onclick="evaluar()">📊 Evaluar</button>
 
-  <div id="resultado"></div>
+<div id="resultado"></div>
 
-  <hr>
-  <p style="font-size: 0.9em; color: #777;">
-    Este test no guarda tus respuestas ni emite diagnósticos.  
-    Es una herramienta educativa para la escucha corporal.
-  </p>
+<hr>
+<p style="font-size: 0.9em; color: #777;">
+  Este test no guarda tus respuestas ni emite diagnósticos.  
+  Es una herramienta educativa para la escucha corporal.
+</p>
 
-  <script>
-    const preguntas = [
-      "¿Sientes sed con frecuencia, incluso sin hacer ejercicio?",
-      "¿Has notado visión borrosa, especialmente al final del día?",
-      "¿Te sientes cansado/a después de comer, como si te bajara la energía?",
-      "¿Tienes antecedentes familiares de diabetes?",
-      "¿Consumes alimentos azucarados o harinas refinadas con frecuencia?",
-      "¿Has tenido infecciones frecuentes o heridas que tardan en sanar?",
-      "¿Has notado cambios en tu peso sin explicación clara?",
-      "¿Sientes hormigueo o entumecimiento en manos o pies?",
-      "¿Te cuesta concentrarte o te sientes mentalmente lento/a?",
-      "¿Has tenido resultados de glucosa cercanos al límite o te han hablado de prediabetes?"
-    ];
+<script>
+  const preguntas = [
+    "¿Sientes sed con frecuencia, incluso sin hacer ejercicio?",
+    "¿Has notado visión borrosa, especialmente al final del día?",
+    "¿Te sientes cansado/a después de comer, como si te bajara la energía?",
+    "¿Tienes antecedentes familiares de diabetes?",
+    "¿Consumes alimentos azucarados o harinas refinadas con frecuencia?",
+    "¿Has tenido infecciones frecuentes o heridas que tardan en sanar?",
+    "¿Has notado cambios en tu peso sin explicación clara?",
+    "¿Sientes hormigueo o entumecimiento en manos o pies?",
+    "¿Te cuesta concentrarte o te sientes mentalmente lento/a?",
+    "¿Has tenido resultados de glucosa cercanos al límite o te han hablado de prediabetes?"
+  ];
 
-    const contenedor = document.getElementById('preguntas');
+  const contenedor = document.getElementById('preguntas');
 
-    preguntas.forEach((texto, i) => {
-      const label = document.createElement('label');
-      label.textContent = texto;
+  preguntas.forEach((texto, i) => {
+    const label = document.createElement('label');
+    label.textContent = texto;
 
-      const slider = document.createElement('input');
-      slider.type = 'range';
-      slider.min = 0;
-      slider.max = 10;
-      slider.value = 0;
-      slider.id = 'p' + (i + 1);
-      slider.oninput = () => {
-        valueSpan.textContent = slider.value;
-      };
+    const slider = document.createElement('input');
+    slider.type = 'range';
+    slider.min = 0;
+    slider.max = 10;
+    slider.value = 0;
+    slider.id = 'p' + (i + 1);
+    slider.oninput = () => {
+      valueSpan.textContent = slider.value;
+    };
 
-      const valueSpan = document.createElement('span');
-      valueSpan.className = 'slider-value';
-      valueSpan.textContent = '0';
+    const valueSpan = document.createElement('span');
+    valueSpan.className = 'slider-value';
+    valueSpan.textContent = '0';
 
-      contenedor.appendChild(label);
-      contenedor.appendChild(slider);
-      contenedor.appendChild(valueSpan);
-    });
+    contenedor.appendChild(label);
+    contenedor.appendChild(slider);
+    contenedor.appendChild(valueSpan);
+  });
 
-    function evaluar() {
-      let total = 0;
-      for (let i = 1; i <= 10; i++) {
-        total += parseInt(document.getElementById('p' + i).value);
-      }
-
-      let resultado = "";
-      if (total <= 30) {
-        resultado = `
-          <strong>🌿 Dulce equilibrio</strong><br>
-          Tu perfil indica un metabolismo glucémico estable.  
-          Sigue cuidando tus hábitos, moviéndote con alegría y escuchando tu cuerpo.
-        `;
-      } else if (total <= 50) {
-        resultado = `
-          <strong>🌥️ Zona de alerta</strong><br>
-          Tu perfil sugiere un riesgo leve.  
-          Podrías estar en una zona de transición.  
-          Revisa tus hábitos, reduce azúcares simples y considera chequeos preventivos.
-        `;
-      } else if (total <= 70) {
-        resultado = `
-          <strong>🔥 Azúcar encendida</strong><br>
-          Tu perfil es compatible con prediabetes.  
-          Es momento de actuar con cariño: alimentación consciente, movimiento regular y revisión médica.
-        `;
-      } else {
-        resultado = `
-          <strong>🌪️ Tormenta glucémica</strong><br>
-          Tu perfil muestra señales compatibles con diabetes.  
-          No te alarmes, pero sí toma acción.  
-          Consulta con profesionales, revisa tu alimentación y acompáñate con cuidado.
-        `;
-      }
-
-      // Botón de regreso ritual
-      resultado += `
-        <div style="text-align:center; margin-top:30px;">
-          <button onclick="window.history.back()" style="padding:10px 20px; font-size:16px; background-color:#eee; border:1px solid #ccc; border-radius:5px;">
-            ⬅️ Regresar al programa
-          </button>
-        </div>
-      `;
-
-      document.getElementById('resultado').innerHTML = resultado;
+  function evaluar() {
+    let total = 0;
+    for (let i = 1; i <= 10; i++) {
+      total += parseInt(document.getElementById('p' + i).value);
     }
-  </script>
+
+    let resultado = "";
+    if (total <= 30) {
+      resultado = `
+        <strong>🌿 Dulce equilibrio</strong><br>
+        Tu perfil indica un metabolismo glucémico estable.  
+        Sigue cuidando tus hábitos, moviéndote con alegría y escuchando tu cuerpo.
+      `;
+    } else if (total <= 50) {
+      resultado = `
+        <strong>🌥️ Zona de alerta</strong><br>
+        Tu perfil sugiere un riesgo leve.  
+        Podrías estar en una zona de transición.  
+        Revisa tus hábitos, reduce azúcares simples y considera chequeos preventivos.
+      `;
+    } else if (total <= 70) {
+      resultado = `
+        <strong>🔥 Azúcar encendida</strong><br>
+        Tu perfil es compatible con prediabetes.  
+        Es momento de actuar con cariño: alimentación consciente, movimiento regular y revisión médica.
+      `;
+    } else {
+      resultado = `
+        <strong>🌪️ Tormenta glucémica</strong><br>
+        Tu perfil muestra señales compatibles con diabetes.  
+        No te alarmes, pero sí toma acción.  
+        Consulta con profesionales, revisa tu alimentación y acompáñate con cuidado.
+      `;
+    }
+
+    // Botón de regreso ritual con URL fija
+    resultado += `
+      <div style="text-align:center; margin-top:30px;">
+        <a href="https://tusitio.com/programa-principal" style="padding:10px 20px; font-size:16px; background-color:#eee; border:1px solid #ccc; border-radius:5px; text-decoration:none; display:inline-block;">
+          ⬅️ Regresar al programa
+        </a>
+      </div>
+    `;
+
+    document.getElementById('resultado').innerHTML = resultado;
+  }
+</script>
 
 </body>
 </html>
-
-
