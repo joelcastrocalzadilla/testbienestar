@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>📱 Test de vínculo consciente con el celular</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      background-color: #f9f9f9;
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin: 15px 0;
+      font-size: 18px;
+    }
+    input[type="number"] {
+      width: 60px;
+      font-size: 16px;
+    }
+    .resultado {
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #e0f7fa;
+      font-size: 18px;
+    }
+    #accionesFinales {
+      display: none;
+      margin-top: 30px;
+      text-align: center;
+    }
+    #accionesFinales button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #00796b;
+      color: white;
+      cursor: pointer;
+    }
+    #accionesFinales button:hover {
+      background-color: #004d40;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📱 Test de vínculo consciente con el celular</h2>
+  <p>Responde cada pregunta con un número del 0 al 4:</p>
+  <ul>
+    <li>0 = Nunca</li>
+    <li>1 = Rara vez</li>
+    <li>2 = A veces</li>
+    <li>3 = Frecuentemente</li>
+    <li>4 = Siempre</li>
+  </ul>
+
+  <form id="test">
+    <label>🧠 ¿Revisas el celular sin motivo aparente?
+      <input type="number" name="p1" min="0" max="4" required>
+    </label>
+    <label>🛌 ¿Lo usas justo antes de dormir o al despertar?
+      <input type="number" name="p2" min="0" max="4" required>
+    </label>
+    <label>🏫 ¿Lo usas durante clases o actividades educativas?
+      <input type="number" name="p3" min="0" max="4" required>
+    </label>
+    <label>🗣️ ¿Interrumpes conversaciones con amigos para mirar el celular?
+      <input type="number" name="p4" min="0" max="4" required>
+    </label>
+    <label>🍽️ ¿Lo usas mientras comes, incluso estando acompañado?
+      <input type="number" name="p5" min="0" max="4" required>
+    </label>
+    <label>🚽 ¿Lo llevas al baño como parte de tu rutina?
+      <input type="number" name="p6" min="0" max="4" required>
+    </label>
+    <label>👥 ¿Lo usas en reuniones familiares o laborales?
+      <input type="number" name="p7" min="0" max="4" required>
+    </label>
+    <label>🎯 ¿Has intentado reducir el uso y no lo logras?
+      <input type="number" name="p8" min="0" max="4" required>
+    </label>
+
+    <button type="button" onclick="evaluar()">🌿 Evaluar mi vínculo</button>
+  </form>
+
+  <div id="resultado" class="resultado" style="display:none;"></div>
+
+  <script>
+    function evaluar() {
+      const form = document.getElementById('test');
+      let score = 0;
+      for (let i = 1; i <= 8; i++) {
+        score += parseInt(form['p' + i].value);
+      }
+
+      let resultado = "";
+      if (score <= 8) {
+        resultado = `
+          <strong>Evaluación: Vínculo consciente</strong><br>
+          Tu relación con el celular es equilibrada.<br>
+          <em>Recomendación:</em> Mantén espacios rituales sin pantalla, como caminatas, comidas compartidas y momentos de estudio profundo.
+        `;
+      } else if (score <= 16) {
+        resultado = `
+          <strong>Evaluación: Uso funcional</strong><br>
+          El celular cumple su rol, pero invade algunos espacios.<br>
+          <em>Recomendación:</em> Prueba ayunos digitales breves, zonas libres de tecnología y rituales sin pantalla.
+        `;
+      } else if (score <= 24) {
+        resultado = `
+          <strong>Evaluación: Dependencia moderada</strong><br>
+          El celular está ocupando más espacio del que deseas.<br>
+          <em>Recomendación:</em> Apaga notificaciones, ritualiza pausas y recupera el tacto con el entorno: conversaciones, comidas, baños sin pantalla.
+        `;
+      } else {
+        resultado = `
+          <strong>Evaluación: Zona de adicción</strong><br>
+          Tu vínculo con el celular está afectando tu bienestar.<br>
+          <em>Recomendación:</em> Acompañamiento consciente, ejercicios de respiración sin pantalla y reconexión con actividades físicas, creativas y afectivas.
+        `;
+      }
+
+      document.getElementById('resultado').innerHTML = resultado;
+      document.getElementById('resultado').style.display = 'block';
+      document.getElementById('accionesFinales').style.display = 'block';
+    }
+  </script>
+
+  <!-- Botones finales -->
+  <div id="accionesFinales">
+    <p style="font-size: 1.1em;">¿Qué deseas hacer ahora?</p>
+    <button onclick="location.reload()">🔁 Repetir el test</button>
+    <button onclick="history.back()">🔙 Regresar al programa que te llamó</button>
+  </div>
+
+</body>
+</html>
