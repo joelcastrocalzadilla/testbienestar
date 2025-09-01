@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>🫁 Test de Salud Pulmonar</title>
+  <style>
+    body { font-family: Arial; background: #f0f8ff; margin: 20px; }
+    h1 { color: #2c3e50; }
+    .section { margin-bottom: 20px; }
+    label { display: block; margin: 5px 0; }
+    .result, .notice { margin-top: 30px; padding: 15px; border-radius: 8px; }
+    .result { background: #e6ffe6; border: 1px solid #b2d8b2; }
+    .notice { background: #fff3cd; border: 1px solid #ffeeba; }
+    button { padding: 10px 20px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+<h1>🫁 Test Educativo de Salud Pulmonar</h1>
+<p>Este test es una herramienta pedagógica para reflexionar sobre tu salud respiratoria. No reemplaza la consulta médica.</p>
+
+<div class="section">
+  <label>¿En qué tipo de ambiente pasas la mayor parte del día?
+    <select id="ambiente">
+      <option value="ventilado">Ambiente ventilado y libre de humo</option>
+      <option value="cerrado">Ambiente cerrado con poca ventilación</option>
+      <option value="polvo">Ambiente con exposición a polvo o químicos</option>
+      <option value="humo">Ambiente con humo de tabaco o combustión</option>
+    </select>
+  </label>
+
+  <label>¿Sientes dificultad para respirar al realizar actividades físicas moderadas?
+    <select id="dificultad">
+      <option value="nunca">Nunca</option>
+      <option value="a_veces">A veces</option>
+      <option value="frecuente">Frecuentemente</option>
+      <option value="siempre">Siempre</option>
+    </select>
+  </label>
+
+  <label>¿Escuchas algún sonido como silbido o crujido al respirar?
+    <select id="sonido">
+      <option value="no">No</option>
+      <option value="ocasional">Ocasionalmente</option>
+      <option value="frecuente">Frecuentemente</option>
+      <option value="constante">Todo el tiempo</option>
+    </select>
+  </label>
+
+  <label>¿Tienes flema o mucosidad de forma habitual?
+    <select id="flema">
+      <option value="no">No</option>
+      <option value="manana">Sí, en las mañanas</option>
+      <option value="ocasional">Ocasionalmente</option>
+      <option value="diario">Todos los días</option>
+    </select>
+  </label>
+
+  <label>¿Recibiste la vacuna contra la influenza en el último año?
+    <select id="vacuna">
+      <option value="si">Sí</option>
+      <option value="no">No</option>
+      <option value="no_necesaria">No creo que sea necesaria</option>
+      <option value="no_recuerdo">No recuerdo</option>
+    </select>
+  </label>
+
+  <label>¿Tuviste bronquitis, neumonía o infecciones respiratorias este año?
+    <select id="infecciones">
+      <option value="no">No</option>
+      <option value="una">Sí, una vez</option>
+      <option value="varias">Sí, varias veces</option>
+      <option value="hospital">Sí, y requirió hospitalización</option>
+    </select>
+  </label>
+
+  <label>¿Fumas o estás expuesto al humo de tabaco regularmente?
+    <select id="tabaco">
+      <option value="no">No</option>
+      <option value="ocasional">Ocasionalmente</option>
+      <option value="electrico">Solo tabaco electrónico</option>
+      <option value="diario">Todos los días</option>
+    </select>
+  </label>
+
+  <label>¿Tienes tos persistente que dura más de 2 semanas?
+    <select id="tos">
+      <option value="no">No</option>
+      <option value="ocasional">Ocasionalmente</option>
+      <option value="frecuente">Frecuentemente</option>
+      <option value="productiva">Sí, con flema</option>
+    </select>
+  </label>
+
+  <label>¿Practicas respiración profunda o consciente?
+    <select id="respira">
+      <option value="diario">Todos los días</option>
+      <option value="semanal">Algunas veces por semana</option>
+      <option value="rara">Rara vez</option>
+      <option value="nunca">Nunca</option>
+    </select>
+  </label>
+
+  <label>¿Tienes plantas purificadoras de aire en casa?
+    <select id="plantas">
+      <option value="si">Sí</option>
+      <option value="no">No</option>
+      <option value="no_interesa">No me interesa</option>
+      <option value="no_se">No sé cuáles son</option>
+    </select>
+  </label>
+
+  <label>¿Ventilas tu casa diariamente?
+    <select id="ventila">
+      <option value="siempre">Todas las mañanas</option>
+      <option value="a_veces">Algunas veces</option>
+      <option value="rara">Rara vez</option>
+      <option value="nunca">Nunca</option>
+    </select>
+  </label>
+
+  <label>¿Vives cerca de zonas industriales o fuentes de contaminación?
+    <select id="zona">
+      <option value="no">No</option>
+      <option value="proteccion">Sí, uso protección</option>
+      <option value="sin_afectar">Sí, pero no me afecta</option>
+      <option value="molestias">Sí, y noto molestias</option>
+    </select>
+  </label>
+
+  <label>¿Has sido diagnosticado con asma, EPOC u otra enfermedad pulmonar?
+    <select id="diagnostico">
+      <option value="no">No</option>
+      <option value="asma">Sí, asma</option>
+      <option value="epoc">Sí, EPOC</option>
+      <option value="otra">Sí, otra enfermedad</option>
+    </select>
+  </label>
+
+  <label>¿Tu respiración se vuelve superficial o acelerada en momentos de estrés?
+    <select id="estres">
+      <option value="no">No</option>
+      <option value="ocasional">Ocasionalmente</option>
+      <option value="frecuente">Frecuentemente</option>
+      <option value="constante">Todo el tiempo</option>
+    </select>
+  </label>
+
+  <label>¿Has realizado una espirometría o evaluación pulmonar en el último año?
+    <select id="espiro">
+      <option value="si">Sí</option>
+      <option value="no">No</option>
+      <option value="no_necesario">No lo considero necesario</option>
+      <option value="no_se">No sé qué es eso</option>
+    </select>
+  </label>
+</div>
+
+<button onclick="mostrarResultado()">Evaluar</button>
+
+<div class="notice">
+  📌 Este test es educativo. No reemplaza el diagnóstico médico ni el acompañamiento profesional.
+</div>
+
+<div class="result" id="resultado"></div>
+
+<script>
+function mostrarResultado() {
+  let resultado = `<h2>🫁 Evaluación general</h2><ul>`;
+  const riesgo = [];
+
+  if (document.getElementById("ambiente").value !== "ventilado") riesgo.push("Ambiente poco saludable");
+  if (document.getElementById("dificultad").value !== "nunca") riesgo.push("Dificultad respiratoria");
+  if (document.getElementById("flema").value !== "no") riesgo.push("Presencia de flema");
+  if (document.getElementById("tabaco").value !== "no") riesgo.push("Exposición a tabaco");
+  if (document.getElementById("tos").value !== "no") riesgo.push("Tos persistente");
+  if (document.getElementById("diagnostico").value !== "no") riesgo.push("Enfermedad pulmonar diagnosticada");
+
+  resultado += `<li><strong>Riesgos detectados:</strong> ${riesgo.length > 0 ? riesgo.join(", ") : "Ninguno relevante"}</li>`;
+  resultado += `<li><strong>Recomendación:</strong> Mantén espacios ventilados, evita contaminantes y consulta a un especialista si presentas síntomas persistentes.</li>`;
+  resultado += `</ul>`;
+  resultado += `<button onclick="location.reload()">🔄 Repetir test</button>`;
+  resultado += `<button onclick="window.location.href='https://buscandosaludhoy.blogspot.com/2025/08/blog-post.html'">📖 Volver al índice general</button>`;
+
+  document.getElementById("resultado").innerHTML = resultado;
+}
+</script>
+
+</body>
+</html>
